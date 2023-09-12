@@ -1,0 +1,20 @@
+<h1>LOGIN</h1>
+
+<form action="/api/session/login" method="post" role="form">
+<div>
+    <input type="text" id="email" name="email" placeholder="mail@mail.com" required>
+</div>
+
+<div>
+    <input type="password" id="password" name="password" placeholder="password" required>
+</div>
+
+<div>
+    <input type="submit" value="Login">
+</div>
+</form>
+
+<div>
+    <button onclick= "location.href = '/api/session/register'">Registro</button>
+    <button onclick= "location.href = '/api/session/restore'">Reestablecer password</button>
+</div>

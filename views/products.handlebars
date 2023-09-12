@@ -1,0 +1,26 @@
+<body>
+    <div>
+        <h1>Productos</h1>
+
+        <h1>USER OK LOGIN!</h1>
+        <h2><i>Bienvenido {{ user }}</i></h2>
+
+        <button class="btn btn-danger my-5" onclick="location.href='/api/session/logout'">LOGOUT</button>
+        {{#each data.product}}
+        <ul>
+            <li>Nombre: {{description}}</li>
+            <li>Precio: {{price}}</li>
+        </ul>
+        <button>Agregar al carrito</button>
+        {{/each}}
+    </div>
+
+    <div>
+        {{#if data.hasPrevPage}}
+        <a href="./all/{{data.limit}}/{{data.prevPage}}">Anterior</a>
+        {{/if}}
+        {{#if data.hasNextPage}}
+        <a href="./all/{{data.limit}}/{{data.nextPage}}">Siguiente</a>
+        {{/if}}
+    </div>
+</body>

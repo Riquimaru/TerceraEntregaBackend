@@ -1,0 +1,29 @@
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{title}}</title>
+</head>
+
+<body>
+    <div>
+        <h1>Registrar Producto</h1>
+        <form action="/realtimeproducts" method="POST">
+            <div class="form-group">
+                <label for="description">Nombre: </label>
+                <input id="description" class="form-control" type="text" name="description" required>
+            </div>
+            <div class="form-group">
+                <label for="precio">Precio: </label>
+                <input id="price" class="form-control" type="text" name="price" required>
+            </div>
+            <button>Enviar</button>
+        </form>
+    </div>
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="/js/index.js"></script>
+</body>
+
+</html>
