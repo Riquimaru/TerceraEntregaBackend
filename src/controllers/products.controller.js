@@ -1,4 +1,7 @@
 import dbProdManager from '../DAO/prod.DAO.js'
+import CustomError from "../services/CustomError.js";
+import EErrors from "../services/enums.js";
+import { generateProductErrorInfo } from "../services/info.js";
 
 const prodService = new dbProdManager()
 
@@ -26,7 +29,14 @@ export const getProductById = async (req, res) => {
 export const createProduct = async (req, res) => {
     let { title, description, price, status, stock } = req.body;
     let prod;
-    if (!title || !description || !price || !stock) return res.send({ status: "error", error: "Falta completar valores" });
+    if (!title || !description || !price || !stock){
+        CustomError.createError({
+            name: "Product creation error",
+            cause: generateProductErrorInfo({title, description, price, stock}),
+            message: "Error trying to create Product",
+            code: EErrors.INVALID_TYPES_ERROR
+        })
+    };
     try {
         prod = await prodService.newProducts(title, description, price, status, stock)
     } catch (error) {

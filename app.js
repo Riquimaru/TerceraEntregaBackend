@@ -7,10 +7,12 @@ import session from 'express-session'
 import MongoStore from 'connect-mongo'
 import sessionRouter from './src/routes/session.router.js'
 import viewRouter from './src/routes/view.router.js'
+import mockRouter from './src/routes/mock.router.js';
 import passport from 'passport'
 import initializePassport from './src/config/passport.config.js'
 import cookieParser from 'cookie-parser'
 import config from './src/config/config.js'
+import errorHandler from './src/middlewares/index.js'
 
 const app = express();
 
@@ -39,9 +41,12 @@ initializePassport()
 app.use(passport.initialize())
 app.use(passport.session())
 
+app.use(errorHandler)
+
 app.use('/api/product', productRouter)
 app.use('/api/cart', cartRouter)
 app.use('/api/session', sessionRouter)
+app.use('/mockingproducts', mockRouter)
 app.use('/', viewRouter)
 
 const httpServer = app.listen(config.port, () => console.log('Server corriendo en '+config.port))

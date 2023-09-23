@@ -1,6 +1,5 @@
 import { Router } from "express";
 import { authMiddleware } from "../middlewares/auth.js"
-import userDTO from "../DAO/DTO/user.DTO.js";
 import passport from "passport";
 import { generateToken, authToken } from "../../utils/jwt.js";
 import userDTO from "../DAO/DTO/user.DTO.js";
